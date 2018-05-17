@@ -15,7 +15,7 @@ with app.app_context():
 
 @app.route('/',methods=['GET', 'POST'])
 def hello_world():
-	User.query.delete()
+	Update.query.delete()
 	db.session.commit()
 	return "hello"
 
