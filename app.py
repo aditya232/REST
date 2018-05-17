@@ -9,10 +9,11 @@ import json
 
 app = Flask(__name__)
 app.config.from_object(Config)
+'''
 with app.app_context():
     db.init_app(app)
     db.create_all()
-
+'''
 @app.route('/',methods=['GET', 'POST'])
 def hello_world():
 	return "hello"
@@ -23,7 +24,7 @@ def success():
 
 @app.route('/detail',methods=['GET'])
 def get_record():
-	price=availability=None
+	price = availability = None
 	query_date = request.args.get('start')
 	query_room_type =(request.args.get('type')=='single')
 	try:
@@ -31,8 +32,8 @@ def get_record():
 		update = Update.query.filter_by(date=query_date).filter_by(room_type = query_room_type).first()
 		if update:
 			price = update.price
-			availability =update.availability
-		return jsonify(price =price,availability = availability)
+			availability = update.availability
+		return jsonify(price = price,availability = availability)
 	except:
 		abort(404)
 
