@@ -9,11 +9,10 @@ import json
 
 app = Flask(__name__)
 app.config.from_object(Config)
-'''
+
 with app.app_context():
     db.init_app(app)
-    db.create_all()
-'''
+
 @app.route('/',methods=['GET', 'POST'])
 def hello_world():
 	return "hello"
