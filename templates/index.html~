@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Browser-Based S3 Upload</title>
+  </head>
+  <body>
+    <h1>Browser-Based S3 Upload</h1>
+
+    <ul>
+      <li><a href="/form/">Form-based</a></li>
+      <li><a href="/dropzone/">Dropzone-based</a></li>
+    </ul>
+  </body>
+</html>
