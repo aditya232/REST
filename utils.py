@@ -2,10 +2,22 @@ from datetime import timedelta, date
 from models import Update
 
 def daterange(start_date, end_date):
+	""" Generator function to generate date objects between two dates.
+    """
     for n in range(int ((end_date - start_date).days)):
         yield start_date + timedelta(n)
 
 def get_dates(days,start_date,end_date):
+	""" Function to create dates between two specified dates that have
+		day of the week in the days.
+		Parameters:
+			days : A python unordered set which contains the days of the week
+			start_date: Starting date
+			end_date: Ending date
+		Returns list of date objects
+    """
+    #Date ranges have to be inclusive thus increment to include the end_date
+    end_date = end_date + timedelta(days = 1)
 	dates = []
 	for date in daterange(start_date, end_date):
 	     if date.weekday() in days:
@@ -13,6 +25,10 @@ def get_dates(days,start_date,end_date):
 	return dates
 
 def process_form(form):
+	""" Function to process the user submitted flask form having 
+		days of the weeks to be booked.
+		Returns list of date objects
+    """
 	days = set()
 	if form.all_days.data :
 		days = set([i for i in range(0,7)])

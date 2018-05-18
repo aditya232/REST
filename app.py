@@ -56,7 +56,6 @@ def submit():
     to the database
     """
     form = MyForm()
-    print form.room_type.data
     if form.validate_on_submit(): 
         filtered_dates = process_form(form)
         for filtered_date in filtered_dates:
