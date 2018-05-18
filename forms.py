@@ -3,7 +3,7 @@ from wtforms import StringField,BooleanField, SubmitField,DateField,IntegerField
 from wtforms.validators import DataRequired,NumberRange
 from datetime import date
 class MyForm(FlaskForm):
-	room_type = SelectField(u'Select room type:   ', choices=[('Single Room', 'Single Room'), ('Double Room', 'Double room')])
+	room_type = SelectField('Select room type: ', choices=[('single', 'Single Room'), ('double','Double room')])
 	availability = IntegerField('Change availability to',validators=[DataRequired(),NumberRange(min=0, max=5, message="Must be an integer in range [0,5]")])
 	price = IntegerField('Change price to',validators=[DataRequired(),NumberRange(min=0)])
 	all_days = BooleanField('All Days')
@@ -20,6 +20,7 @@ class MyForm(FlaskForm):
 	end_date = DateField('Select end date')
 	submit = SubmitField('Update')
 	def validate(self):
+		return True
 		rv = FlaskForm.validate(self)
 		if not rv:
 			return False
